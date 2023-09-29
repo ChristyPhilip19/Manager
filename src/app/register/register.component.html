@@ -1,0 +1,83 @@
+<div style="padding-top: 5%; padding-left: 20%; padding-right: 20%;">
+<mat-card>
+    <mat-card-header>
+      <mat-card-title style="color: plum !important;">REGISTER</mat-card-title>
+      <mat-card-subtitle style="color: palevioletred;">User Registration</mat-card-subtitle>
+    </mat-card-header>
+    <div style="padding-left: 10%; padding-top: 2%;">
+       
+        <mat-form-field class="example-full-width">
+            <mat-label>Enter Full Name</mat-label>
+            <input matInput placeholder="Ex. James" ngDefaultControl [(ngModel)]="register.fullName">
+          </mat-form-field>
+
+  <mat-form-field class="example-full-width" style="padding-left: 15%;width: 31%;">
+    <mat-label>Enter Password</mat-label>
+    <input [type]="showPassword ? 'text' : 'password'" name="password" matInput placeholder="Ex. John" ngDefaultControl [(ngModel)]="register.password" >
+    <mat-icon matSuffix (click)="togglePasswordVisibility()">
+      {{showPassword?'visibility_off':'visibility'}}
+  </mat-icon>
+  </mat-form-field>
+</div>
+
+<div style="padding-left: 10%; padding-top: 2%;">
+       
+    <mat-form-field class="example-full-width">
+      <mat-label>Enter Email</mat-label>
+      <input matInput placeholder="Ex. james.john@gmail.com" ngDefaultControl [(ngModel)]="register.email">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width" style="padding-left: 15%;">
+      <mat-label>Enter Phone No.</mat-label>
+      <input matInput placeholder="Ex. +91 0000000000" ngDefaultControl [(ngModel)]="register.phoneNo">
+    </mat-form-field>
+  </div>
+  <div style="padding-left: 10%; padding-top: 2%;">
+       
+    <mat-form-field appearance="fill" style="width: 31%;">
+        <mat-label>Select Birthday</mat-label>
+        <input matInput [matDatepicker]="picker" ngDefaultControl [(ngModel)]="register.birthDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill" style="padding-left: 14.8%;">
+        <mat-label>Select Gender</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let gender of gender" [value]="gender.value" ngDefaultControl [(ngModel)]="register.gender"> 
+            {{gender.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+</div>
+
+<div style="padding-left: 10%; padding-top: 2%;">
+   
+<mat-form-field class="example-full-width">
+  <mat-label>Enter Address</mat-label>
+  <input matInput placeholder="Ex. House No, Road, City" ngDefaultControl [(ngModel)]="register.address">
+</mat-form-field>
+
+<mat-form-field appearance="fill" style="padding-left: 14.8%;">
+    <mat-label>Select Profession</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let professions of professions" [value]="professions.value" ngDefaultControl [(ngModel)]="register.profession">
+        <span>{{professions.viewValue}}</span>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<mat-error *ngIf="valueCheck===true">
+    All details are <strong>required</strong>
+  </mat-error>
+<div style="padding-left: 32%;padding-bottom: 3%;">
+    <button mat-raised-button color="warn" style="margin-right: 10%;">Reset</button>
+    <button mat-raised-button color="primary" (click)="submit(register)" >Submit</button>
+    
+    
+</div>
+  
+  </mat-card>
+
+</div>

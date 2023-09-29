@@ -1,0 +1,30 @@
+<mat-toolbar *ngIf="check===true">
+    <button (click)="opened=!opened" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>MANAGER</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>person</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>exit_to_app</mat-icon>
+    </button>
+  </mat-toolbar>
+  <mat-sidenav-container *ngIf="check===true">
+    <mat-sidenav [(opened)]="opened" mode="side">
+        <!-- <a href="/dashboard">Dashboard</a> -->
+        <mat-list>
+            <mat-list-item>
+                <button routerLink="/dashboard" mat-button><mat-icon>home</mat-icon>Dashboard</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button  routerLink="/event-schedule" mat-button><mat-icon>event</mat-icon>Event Schedule</button>
+            </mat-list-item>
+        </mat-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <router-outlet #aa></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
